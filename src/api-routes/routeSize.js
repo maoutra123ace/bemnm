@@ -5,7 +5,7 @@ let productsCtrl = require('../controllers/size.js');
 //lay tat ca
 router.get('/', productsCtrl.getAll)
 //lay theo Id
-router.get('/:sizeId', productsCtrl.getbyID)
+router.get('/:id', productsCtrl.getbyID)
 
 // create
 router.post('/', productsCtrl.add)

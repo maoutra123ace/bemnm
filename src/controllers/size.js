@@ -19,18 +19,15 @@ module.exports = {
         })
     },
     update: (req, res) => {
-        let data = req.body;
-        let sizeId = req.params.id;
         let sql = 'UPDATE size SET ? WHERE id = ?'
-        db.query(sql, [data, sizeId], (err, response) => {
+        db.query(sql, [req.body, req.params.id], (err, response) => {
             if (err) throw err
             res.json({ message: 'Update success!' })
         })
     },
     add: (req, res) => {
-        let data = req.body;
         let sql = 'INSERT INTO size SET ?'
-        db.query(sql, [data], (err, response) => {
+        db.query(sql, [req.body], (err, response) => {
             if (err) throw err
             res.json({ message: 'Insert success!' })
         })

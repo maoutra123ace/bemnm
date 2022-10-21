@@ -12,18 +12,16 @@ module.exports = {
     },
     getbyID: (req, res) => {
         let sql = 'SELECT * FROM admin WHERE admin_id = ?'
-        db.query(sql, [req.params.adminId], (err, response) => {
+        db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
             res.json(response[0])
         })
     },
     update: (req, res) => {
-        let data = req.body;
-        let adminId = req.params.adminId;
         let sql = 'UPDATE admin SET ? WHERE admin_id = ?'
-        db.query(sql, [data, adminId], (err, response) => {
+        db.query(sql, [req.body, req.params.id], (err, response) => {
             if (err) throw err
-            res.json({message: 'Update success!'})
+            res.json({ message: 'Update success!' })
         })
     },
     add: (req, res) => {
@@ -31,14 +29,14 @@ module.exports = {
         let sql = 'INSERT INTO admin SET ?'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-            res.json({message: 'Insert success!'})
+            res.json({ message: 'Insert success!' })
         })
-    }, 
+    },
     delete: (req, res) => {
         let sql = 'DELETE FROM admin WHERE admin_id = ?'
-        db.query(sql, [req.params.adminId], (err, response) => {
+        db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
-            res.json({message: 'Delete success!'})
+            res.json({ message: 'Delete success!' })
         })
     }
 }

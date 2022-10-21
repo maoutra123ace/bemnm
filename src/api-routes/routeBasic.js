@@ -14,8 +14,6 @@ module.exports = function(app) {
     app.use('/category', routeCategory);
     app.use('/member', routeMember);
     app.use('/admin', routeAdmin);
-  
-
 };
   //   app.route('/products/:productId')
   //     .get(productsCtrl.detail)

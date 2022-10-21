@@ -13,18 +13,16 @@ module.exports = {
     },
     getbyID: (req, res) => {
         let sql = 'SELECT * FROM member WHERE member_id = ?'
-        db.query(sql, [req.params.memberId], (err, response) => {
+        db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
             res.json(response[0])
         })
     },
     update: (req, res) => {
-        let data = req.body;
-        let memberId = req.params.memberId;
         let sql = 'UPDATE member SET ? WHERE member_id = ?'
-        db.query(sql, [data, memberId], (err, response) => {
+        db.query(sql, [req.body, req.params.id], (err, response) => {
             if (err) throw err
-            res.json({message: 'Update success!'})
+            res.json({ message: 'Update success!' })
         })
     },
     add: (req, res) => {
@@ -32,14 +30,14 @@ module.exports = {
         let sql = 'INSERT INTO member SET ?'
         db.query(sql, [data], (err, response) => {
             if (err) throw err
-            res.json({message: 'Insert success!'})
+            res.json({ message: 'Insert success!' })
         })
-    }, 
+    },
     delete: (req, res) => {
         let sql = 'DELETE FROM member WHERE member_id = ?'
-        db.query(sql, [req.params.memberId], (err, response) => {
+        db.query(sql, [req.params.id], (err, response) => {
             if (err) throw err
-            res.json({message: 'Delete success!'})
+            res.json({ message: 'Delete success!' })
         })
     }
 }

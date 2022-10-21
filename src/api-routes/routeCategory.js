@@ -6,7 +6,7 @@ let productsCtrl = require('../controllers/category.js');
 router.get('/', productsCtrl.getAll)
 
 //lay theo Id
-router.get('/:categoryId', productsCtrl.getbyID)
+router.get('/:id', productsCtrl.getbyID)
 
 // create
 router.post('/', productsCtrl.add)
