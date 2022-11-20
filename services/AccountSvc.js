@@ -43,7 +43,7 @@ export const getAccountById = async (_id) => {
 };
 
 export const addAccount = async (account) => {
-  account["Password"] = await Utils.hashPassword(account["Password"]);
+  account["password"] = await Utils.hashPassword(account["password"]);
 
   return await AccountRepo.addAccount(account);
 };

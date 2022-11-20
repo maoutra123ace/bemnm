@@ -13,7 +13,13 @@ export const getAccountById = async (_id) => {
 };
 
 export const addAccount = async (Account) => {
-  return await AccountModel.create(Account);
+  try {
+    const result = await AccountModel.create(Account);
+    console.log('A document was inserted:', result);
+    return result;
+  } catch (e) {
+    return e;
+  }
 };
 
 export const updateAccount = async (_id, Account) => {
